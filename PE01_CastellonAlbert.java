@@ -1,14 +1,16 @@
 import java.util.Scanner;
 import java.time.LocalDate; // Aqui importem la classe per poder accedir a la data.
+import java.time.Period;
 
 public class PE01_CastellonAlbert {
     public static void main(String[] args) {
         Scanner escaner = new Scanner(System.in);
 
         //Totes aquestes variables son conjunts de caràcters, encara que el codi postal sigui numèric a 
-        //Espanya ho poso com a string perquè a altres països conté lletres.
+        //Espanya ho poso com a string perquè a altres països conté lletres. La variable de la data de naixement 
+        //la recollirem com a string pero la canviarem més endavant
 
-        String name, surnames, city, postCode, userName, password; 
+        String name, surnames, birthdate, city, postCode, userName, password; 
 
         //la variable student ha de ser boolean ja que al mateix enunciat ens planteja 2 possibles valors: si o no (true o false)
         
@@ -22,6 +24,9 @@ public class PE01_CastellonAlbert {
 
         System.out.println("Quin són els teus cognoms?");
         surnames = escaner.nextLine();
+
+        System.out.println("Introdueix la teva data de naixement (AAAA-MM-DD)");
+        birthdate = escaner.nextLine();
 
         System.out.println("A quina ciutat vius?");
         city = escaner.nextLine();
@@ -57,18 +62,22 @@ public class PE01_CastellonAlbert {
 
         System.out.println("El resultat d'inici de sessió és " + logIn);
 
-        System.out.println("Nom Complet: " + name + " " + surnames);
-        System.out.println("Estudiant: " + student);
+        //Aqui convertim la data de naixement en una variable de tipus data
+
+        LocalDate truebirthdate = LocalDate.parse(birthdate);
         LocalDate currentDate = LocalDate.now(); // Aquí guardem la data del moment en el qual el programa s'executa
 
-	//Edat: Valor
-	//Major d’edat: True/False
+        Period age = Period.between(truebirthdate, currentDate);
+        
 
+        System.out.println("Nom Complet: " + name + " " + surnames);
+        System.out.println("Edat: " + age.getYears());
+        System.out.println("Major d'edat: " + (age.getYears() >= 18));
+        System.out.println("Estudiant: " + student);
 
+        escaner.close();
     }
 }
 
-
-//Data de naixement
 
 
