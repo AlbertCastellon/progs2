@@ -35,10 +35,10 @@ public class PE01_CastellonAlbert {
         postCode = escaner.nextLine();
 
         System.out.println("Quin serà el teu nom d'usuari?");
-        userName = escaner.nextLine();
+        userName = escaner.next();
 
         System.out.println("Guarda la contrasenya");
-        password = escaner.nextLine();
+        password = escaner.next();
 
         System.out.println("Estàs estudiant actualment?");
         student = escaner.nextBoolean();
@@ -51,15 +51,14 @@ public class PE01_CastellonAlbert {
         String checkUserName, checkPassword;
 
         System.out.println("Introdueix el teu nom d'usuari.");
-        checkUserName = escaner.nextLine();
+        checkUserName = escaner.next();
 
         System.out.println("Introdueix la teva contrasenya.");
-        checkPassword = escaner.nextLine();
+        checkPassword = escaner.next();
 
         //Comprovem si el log in s'ha pogut efectuar.
 
-        boolean logIn = userName == checkUserName && password == checkPassword;
-
+        boolean logIn = (userName.equals(checkUserName)) && (password.equals(checkPassword));
         System.out.println("El resultat d'inici de sessió és " + logIn);
 
         //Aqui convertim la data de naixement en una variable de tipus data
