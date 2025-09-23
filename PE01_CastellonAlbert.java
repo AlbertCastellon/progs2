@@ -1,18 +1,18 @@
-import java.util.Scanner;
+import java.util.Scanner; // Importo l'escaner
 import java.time.LocalDate; // Aqui importem la classe per poder accedir a la data.
-import java.time.Period;
+import java.time.Period; // Amb això importo el mètode period per trobar el temps entre dos dates.
 
 public class PE01_CastellonAlbert {
     public static void main(String[] args) {
-        Scanner escaner = new Scanner(System.in);
+        Scanner escaner = new Scanner(System.in); //Declaro l'escaner.
 
         //Totes aquestes variables son conjunts de caràcters, encara que el codi postal sigui numèric a 
         //Espanya ho poso com a string perquè a altres països conté lletres. La variable de la data de naixement 
         //la recollirem com a string pero la canviarem més endavant
 
-        String name, surnames, birthdate, city, postCode, userName, password; 
+        String name, surnames, birthdateString, city, postCode, userName, password; 
 
-        //la variable student ha de ser boolean ja que al mateix enunciat ens planteja 2 possibles valors: si o no (true o false)
+        //La variable student ha de ser boolean ja que al mateix enunciat ens planteja 2 possibles valors: si o no (true o false).
         
         boolean student;
 
@@ -25,8 +25,8 @@ public class PE01_CastellonAlbert {
         System.out.println("Quin són els teus cognoms?");
         surnames = escaner.nextLine();
 
-        System.out.println("Introdueix la teva data de naixement (AAAA-MM-DD)");
-        birthdate = escaner.nextLine();
+        System.out.println("Introdueix la teva data de naixement (AAAA-MM-DD)"); // Demanem un format concret per poder canviar-ho després.
+        birthdateString = escaner.nextLine();
 
         System.out.println("A quina ciutat vius?");
         city = escaner.nextLine();
@@ -56,23 +56,26 @@ public class PE01_CastellonAlbert {
         System.out.println("Introdueix la teva contrasenya.");
         checkPassword = escaner.next();
 
-        //Comprovem si el log in s'ha pogut efectuar.
+        // Comprovem si el log in s'ha pogut efectuar.
 
         boolean logIn = (userName.equals(checkUserName)) && (password.equals(checkPassword));
         System.out.println("El resultat d'inici de sessió és " + logIn);
 
-        //Aqui convertim la data de naixement en una variable de tipus data
+        // Aqui convertim la data de naixement en una variable de tipus data
 
-        LocalDate truebirthdate = LocalDate.parse(birthdate);
+        LocalDate birthdate = LocalDate.parse(birthdateString); // Convertim la data de naixement que em recollit en string a date.
         LocalDate currentDate = LocalDate.now(); // Aquí guardem la data del moment en el qual el programa s'executa
 
-        Period age = Period.between(truebirthdate, currentDate);
+        Period age = Period.between(birthdate, currentDate); // Aquesta instrucció ens dóna el periode de temps entre dues dates, és a dir l'edat
         
+        // Mostrem les dades.
 
         System.out.println("Nom Complet: " + name + " " + surnames);
-        System.out.println("Edat: " + age.getYears());
-        System.out.println("Major d'edat: " + (age.getYears() >= 18));
+        System.out.println("Edat: " + age.getYears());  // Mostrem per consola els anys de l'edat que em calculat abans.
+        System.out.println("Major d'edat: " + (age.getYears() >= 18)); // Comprovem si l'edat és major o igual a 18 i per tant major d'edat.
         System.out.println("Estudiant: " + student);
+
+        // Tanquem l'escaner.
 
         escaner.close();
     }
