@@ -61,8 +61,6 @@ public class PE01_CastellonAlbert {
         boolean logIn = (userName.equals(checkUserName)) && (password.equals(checkPassword));
         System.out.println("El resultat d'inici de sessió és " + logIn);
 
-        // Aqui convertim la data de naixement en una variable de tipus data
-
         LocalDate birthdate = LocalDate.parse(birthdateString); // Convertim la data de naixement que em recollit en string a date.
         LocalDate currentDate = LocalDate.now(); // Aquí guardem la data del moment en el qual el programa s'executa
 
