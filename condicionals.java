@@ -30,13 +30,17 @@ public class condicionals {
         int nota3;
         System.out.println("Introdueix la teva nota");
         nota3 = escaner.nextInt();
-        if (nota < 0 || nota > 10) {
+        if (nota3 < 0 || nota3 > 10) {
             System.out.println("la nota introduida és invàlida");
-        } else if (nota < 5) {
+        } else if (nota3 < 5) {
             System.out.println("Estàs suspès");          
         }else {
             System.out.println("Estàs aprovat");
         }
+
+        //-----------------------
+
+
         escaner.close();
     }
     
